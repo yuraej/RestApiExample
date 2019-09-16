@@ -11,15 +11,14 @@ import static io.restassured.RestAssured.given;
 
 public class UserListAdapter {
 
-    public UsersList get() {
+    public UsersList get(int page) {
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
-
         Response response = given()
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON)
         .when()
-                .get("https://reqres.in/api/users?page=2")
+                .get(String.format("https://reqres.in/api/users?page=%s", page))
         .then()
                 .statusCode(200)
                 .contentType(ContentType.JSON).extract().response();

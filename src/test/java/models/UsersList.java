@@ -3,7 +3,7 @@ package models;
 import com.google.gson.annotations.Expose;
 import lombok.Data;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class UsersList {
@@ -16,5 +16,5 @@ public class UsersList {
     @Expose
     int totalPages;
     @Expose
-    ArrayList<User> data;
+    List<User> data;
 }
