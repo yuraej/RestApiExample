@@ -1,6 +1,8 @@
 package tests;
 
 import adapters.UserListAdapter;
+import adapters.UsersAdapter;
+import models.JobUser;
 import models.User;
 import models.UsersList;
 import org.testng.annotations.Test;
@@ -19,5 +21,11 @@ public class ReqresTests {
         ));
         UsersList list = new UserListAdapter().get(1);
         assertEquals(list, expectedList);
+    }
+    
+    @Test
+    public void createUser() {
+        JobUser user = new UsersAdapter().post(new JobUser("name", "job", "", ""));
+        System.out.println(user);
     }
 }
