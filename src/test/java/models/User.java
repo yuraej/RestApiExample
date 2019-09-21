@@ -1,6 +1,7 @@
 package models;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -12,8 +13,10 @@ public class User {
     @Expose
     String email;
     @Expose
+    @SerializedName("first_name")
     String firstName;
     @Expose
+    @SerializedName("last_name")
     String lastName;
     @Expose
     String avatar;
