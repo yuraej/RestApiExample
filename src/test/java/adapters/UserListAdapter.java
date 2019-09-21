@@ -9,18 +9,16 @@ import org.apache.http.protocol.HTTP;
 
 import static io.restassured.RestAssured.given;
 
-public class UserListAdapter {
+public class UserListAdapter extends MainAdapter{
 
-    public UsersList get(int page) {
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .create();
+    public UsersList get(String page, int responseCode) {
+
         Response response = given()
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON)
         .when()
-                .get(String.format("https://reqres.in/api/users?page=%s", page))
+                .get(String.format("https://reqres.in/api/" + page))
         .then()
-                .statusCode(200)
+                .statusCode(responseCode)
                 .contentType(ContentType.JSON).extract().response();
 
         return gson.fromJson(response.asString().trim(), UsersList.class);
